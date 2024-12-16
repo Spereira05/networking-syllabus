@@ -1,0 +1,30 @@
+services:
+
+  container_A:
+    image: alpine
+    container_name: container_ipv4
+    command: sleep 3600
+    networks:
+      - ipv4_net
+
+  container_B:
+    image: alpine
+    container_name: container_ipv6
+    command: sleep 3600
+    networks:
+      - ipv6_net
+
+networks:
+
+  ipv4_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "192.168.1.0/24"  
+
+  ipv6_net:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: "2001:db8:1::/64"

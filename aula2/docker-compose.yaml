@@ -1,0 +1,28 @@
+version: '3'
+services:
+  container1:
+    build:
+      context: .
+      dockerfile: container1.Dockerfile
+    networks:
+      - net1
+      - shared
+  container2:
+    build:
+      context: .
+      dockerfile: container2.Dockerfile
+    networks:
+      - net2
+      - shared
+  container3:
+    build:
+      context: .
+      dockerfile: container3.Dockerfile
+    networks:
+      - net3
+      - shared
+networks:
+  net1:
+  net2:
+  net3:
+  shared:

@@ -1,0 +1,23 @@
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "5000:5000"
+    networks:
+      - chatnet
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    depends_on:
+      - server
+    networks:
+      - chatnet
+    tty: true  
+
+networks:
+  chatnet:
